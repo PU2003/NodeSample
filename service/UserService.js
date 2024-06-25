@@ -1,4 +1,4 @@
-const User = require('../database');
+const User = require('../model/UserModel');
 
 async function createNewUser(userData) {
     try {
@@ -74,4 +74,4 @@ async function softDeleteUserById(id) {
 }
 
 
-module.exports = { createNewUser ,getUsers, findUserById, updateUserById,updateUser,softDeleteUserById};
+module.exports =  createNewUser ,getUsers, findUserById, updateUserById,updateUser,softDeleteUserById;
