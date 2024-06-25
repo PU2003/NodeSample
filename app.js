@@ -3,7 +3,7 @@ const express = require('express')                                   // returnin
 const app = express()                                                // invoking the function of express in order to make an instance of express like 'app'
 const dotenv = require('dotenv');
 const mongoose = require("mongoose")
-const userRoutes = require('./controller/UserController')
+const router = require('./routes/UserRoutes')
 
 
 dotenv.config();
@@ -29,7 +29,10 @@ const connectDB = async () => {
 
 connectDB(); 
 
-app.use(userRoutes)
+app.use(router);
+
+
+module.exports = app;
 
 // app.post('/add/user',(req,res) => {
 //     const user = new User({
