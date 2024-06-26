@@ -4,7 +4,7 @@ const app = express()                                                // invoking
 const dotenv = require('dotenv');
 const mongoose = require("mongoose")
 const router = require('./routes/UserRoutes')
-
+const basicAuth = require('./auth/BasicAuth')
 
 dotenv.config();
 
@@ -28,6 +28,8 @@ const connectDB = async () => {
 }
 
 connectDB(); 
+
+app.use('/worko',basicAuth);
 
 app.use('/worko',router);
 

@@ -47,18 +47,6 @@ async function updateUserById(id, updateData) {
     }
 }
 
-async function updateUser(id, updateData) {
-    try {
-        const updatedUser = await User.findByIdAndUpdate(id, updateData, { new: true });
-        if (!updatedUser) {
-            throw new Error("User not found.");
-        }
-        return { status: "success", message: "Changes have been done successfully." };
-    } catch (error) {
-        console.error(error);
-        throw new Error("An error occurred while trying to update the user.");
-    }
-}
 
 async function softDeleteUserById(id) {
     try {
@@ -74,4 +62,4 @@ async function softDeleteUserById(id) {
 }
 
 
-module.exports =  createNewUser ,getUsers, findUserById, updateUserById,updateUser,softDeleteUserById;
+module.exports =  {createNewUser ,getUsers, findUserById, updateUserById,softDeleteUserById};

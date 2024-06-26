@@ -5,10 +5,10 @@ UserController = require('../controller/UserController')
 
 router.post('/add/user', UserController.createNewUser)                    // the request will be send to the appropriate method of the controller
 router.get('/all',UserController.getUser)
-router.get('/finduser/:id',UserController.findUser)
-router.put('/update/:id',UserController.updateUser)
-router.patch('/update/:id',UserController.updateUserById)
-router.delete('/delete/:id',UserController.deleteUser)
+router.get('/finduser/:userId',UserController.findUser)
+router.put('/update/:userId',UserController.updateUser)
+router.patch('/update/:userId',UserController.updateUser)
+router.delete('/delete/:userId',UserController.deleteUser)
 
 
 module.exports = router;                                       

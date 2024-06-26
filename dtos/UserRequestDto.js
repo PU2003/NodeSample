@@ -2,21 +2,30 @@ const Joi = require('@hapi/joi');
 
 const emailSchema = Joi.string().email().required();
 const zipCodeSchema = Joi.string().trim().pattern(/^\d{6}$/).required();
-const idSchema = Joi.string().length(24).hex().required();
+const idSchema = Joi.string().regex(/^[0-9a-fA-F]{24}$/);
 
 const createSchema = Joi.object({
-  email: emailSchema,
-  zipCode: zipCodeSchema
+    email: emailSchema,
+    name: Joi.string().required(),
+    age: Joi.number().required(),
+    city: Joi.string().required(),
+    zipCode: zipCodeSchema,
+  
 });
 
 const updateSchema = Joi.object({
-  id: idSchema,
-  email: emailSchema,
-  zipCode: zipCodeSchema
+
+    userId: idSchema,
+    email: Joi.string().email(),
+    name: Joi.string(),
+    age: Joi.number(),
+    city: Joi.string(),
+    zipCode: Joi.string().trim().pattern(/^\d{6}$/)
+
 });
 
 const deleteSchema = Joi.object({
-  id: idSchema
+    userId: idSchema
 });
 
-module.exports = createSchema, updateSchema, deleteSchema ;
+module.exports = {createSchema, updateSchema, deleteSchema} ;
